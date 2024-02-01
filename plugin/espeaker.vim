@@ -21,9 +21,12 @@ endfunction
 
 function! SpeakLine()
 let line=getline('.')
+
+if l:line =~ '('
+    let l:line = substitute(l:line, '(', 'parenthesis', '')                                                                                              endif
+
 call Speak(line)
 endfunction
-
 
 function! SpeakStatus(mode)
 call Speak(line('.') . ' '. virtcol('.') . ' ' . a:mode)
